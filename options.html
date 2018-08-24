@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body{
+        font-size: 24px;
+      }
+      input{
+        font-size: 24px;
+        height: 30px;
+        width: 500px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+      button{
+        font-size: 24px;
+        display: inline-block;
+      }
+      label{
+        display: inline-block;
+        width: 220px;
+        text-align: right;
+      }
+      .save-button{
+        margin-top: 20px;
+        display: block;
+        text-align: center;
+        width: 100%;
+      }
+      .options{
+        line-height: 32px;
+        display: block;
+        width: max-content;
+      }
+      .title{
+        width: 100%;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="buttonDiv" style="display: none">
+    </div>
+      <div class="options">
+      <div class="title">
+          <h3>Home Depot Associate Schedule Downloader</h3>
+        </div>
+      <label>Default File Name:</label>
+      <input id="fileName" name="fileName" value="hd-schedule">
+      <br>
+      <label>Default Event Name:</label>
+      <input id="eventName" name="eventName" value="Work-HD">
+      <br>
+      <label>Location:</label>
+      <input id="location" name="location" value="">
+      <br>
+      <span class="save-button">
+      <button id="saveButton">Save</button>
+      </span>
+    </div>
+  </body>
+  <script src="options.js"></script>
+</html>

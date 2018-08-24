@@ -1,0 +1,34 @@
+{
+  "name": "Home Depot Associate Schedule Downloader",
+  "version": "1.0",
+  "description": "Adds CSV and ICAL download links to the MYTHDHR schedule page.",
+  "permissions": ["tabs", "activeTab", "declarativeContent", "downloads", "storage", "https://yourschedule.homedepot.com/"],
+  "options_page": "options.html",
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://yourschedule.homedepot.com/*"],
+      "js": ["icalfile.js", "csvfile.js", "hdscheduleparser.js", "main.js"]
+    }
+  ],
+
+  "page_action": {
+    "default_icon": {                    
+      "16": "images/favicon-16x16.png",
+      "32": "images/favicon-32x32.png",
+      "48": "images/android-icon-48x48.png",
+      "128": "images/favicon-96x96.png"
+    },
+    "default_title": "HD Associate Schedule Downloader"      
+  },
+  "icons": {
+    "16": "images/favicon-16x16.png",
+    "32": "images/favicon-32x32.png",
+    "48": "images/android-icon-48x48.png",
+    "128": "images/favicon-96x96.png"
+  },
+  "manifest_version": 2
+}
