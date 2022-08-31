@@ -1,7 +1,7 @@
-window.onload = function(){
-    var fileName = "hd-schedule";
-    var eventLocation = "";
-    var eventName = "Work-HD";
+window.onload = function() {
+    let fileName = "hd-schedule";
+    let eventLocation = "";
+    let eventName = "Work-HD";
     chrome.storage.sync.get('filename', function(data) {
         fileName = data.filename;
         chrome.storage.sync.get('location', function(data) {
@@ -14,11 +14,10 @@ window.onload = function(){
     });
 }
 
-
-function scheduleMain(fileName, eventTitle, loc){
-    var HDSchedule = new HDScheduleParser();
-    var theCSVFile = new CsvFile();
-    var theICALFile = new IcalFile();
+function scheduleMain(fileName, eventTitle, loc) {
+    const HDSchedule = new HDScheduleParser();
+    const theCSVFile = new CsvFile();
+    const theICALFile = new IcalFile();
     theICALFile.setUser(HDSchedule.user);
 
     HDSchedule.schedule.forEach(function(shift){
@@ -32,51 +31,42 @@ function scheduleMain(fileName, eventTitle, loc){
 }
 
 //FUNCTION THAT ADDS THE DOWNLOAD BUTTONS TO THE WINDOW;
-function addDownloadButtons(blobCSV, blobICAL, filename){
-    var toolbar = document.getElementById('toolbar');
-    var toolbarParent = toolbar.parentNode;
-    
-    var saveWindow = document.createElement('div');
+function addDownloadButtons(blobCSV, blobICAL, filename) {
+    const toolbar = document.getElementById('toolbar');
+    const toolbarParent = toolbar.parentNode;
+
+    const saveWindow = document.createElement('div');
     saveWindow.style.position = 'absolute';
     saveWindow.style.right = '120px';
     saveWindow.style.top = '77px';
     saveWindow.style.marginTop = '5px';
     saveWindow.style.zIndex = "100";
-    var header = document.createElement('span');
+
+    const header = document.createElement('span');
     header.innerHTML = 'Export to File:';
     header.style.fontSize = '16px';
-    //header.style.lineHeight = '32px';
-    var button = document.createElement('a');
-    var url = URL.createObjectURL(blobCSV);
-    button.href = url;
-    button.innerHTML = 'CSV';
-    button.style.marginLeft = '10px';
-    //button.style.padding = '10px';
-    button.style.fontSize = '16px';
-    button.style.cursor = "pointer"
-    //button.style.marginTop = "25px";
-    var calbut = document.createElement('a');
-    var urlB = URL.createObjectURL(blobICAL);
-    calbut.href = urlB;
-    calbut.innerHTML = 'ICAL';
-    calbut.style.marginLeft = '10px';
-    //button.style.padding = '10px';
-    calbut.style.fontSize = '16px';
-    calbut.style.cursor = "pointer"
-    button.download = filename + '.csv';
-    calbut.download = filename + '.ics';
-    var close = document.createElement('a');
-    close.innerHTML = 'Close';
-    close.style.padding = '10px';
-    close.style.fontSize = "18px";
-    close.style.marginTop = '25px';
-    close.onclick = function(){
-        saveWindow.remove();
-    }
+
+    // CSV button
+    const buttonCSV = document.createElement('a');
+    const urlCSV = URL.createObjectURL(blobCSV);
+    buttonCSV.href = urlCSV;
+    buttonCSV.innerHTML = 'CSV';
+    buttonCSV.style.marginLeft = '10px';
+    buttonCSV.style.fontSize = '16px';
+
+    // ICAL button
+    const buttonICAL = document.createElement('a');
+    const urlICAL = URL.createObjectURL(blobICAL);
+    buttonICAL.href = urlICAL;
+    buttonICAL.innerHTML = 'ICAL';
+    buttonICAL.style.marginLeft = '10px';
+    buttonICAL.style.fontSize = '16px';
+
+    buttonCSV.download = filename + '.csv';
+    buttonICAL.download = filename + '.ics';
+
     saveWindow.appendChild(header);
-    saveWindow.appendChild(button);
-    saveWindow.appendChild(calbut);
-    //saveWindow.appendChild(close);
+    saveWindow.appendChild(buttonCSV);
+    saveWindow.appendChild(buttonICAL);
     toolbarParent.insertBefore(saveWindow, toolbar);
-    
 }

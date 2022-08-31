@@ -5,22 +5,24 @@
 'use strict';
 
 chrome.runtime.onInstalled.addListener(function() {
-  chrome.storage.sync.set({filename: 'hd-schedule'}, function() {
-  });
-  chrome.storage.sync.set({eventname: 'Work-HD'}, function() {
-  });
-  chrome.storage.sync.set({location: ''}, function() {
-  });
+  chrome.storage.sync.set({filename: 'hd-schedule'}, function() {});
+  chrome.storage.sync.set({eventname: 'Work-HD'}, function() {});
+  chrome.storage.sync.set({location: ''}, function() {});
   chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
-    chrome.declarativeContent.onPageChanged.addRules([{
-      conditions: [new chrome.declarativeContent.PageStateMatcher({
-        pageUrl: {hostEquals: 'yourschedule.homedepot.com'},
-      })],
-      actions: [new chrome.declarativeContent.ShowPageAction()]
-    }]);
+    chrome.declarativeContent.onPageChanged.addRules([
+      {
+        conditions: [
+          new chrome.declarativeContent.PageStateMatcher({
+            pageUrl: {hostSuffix: 'yourschedule.homedepot.com', schemes: ['https']}
+          })
+        ],
+        actions: [
+          new chrome.declarativeContent.ShowAction()
+        ]
+      }
+    ]);
   });
 });
-
 
 // chrome.tabs.onUpdated.addListener( function(tabId, changeInfo, tab){
 //     //ON THE TAB LOAD COMPLETE EVENT
@@ -35,10 +37,5 @@ chrome.runtime.onInstalled.addListener(function() {
 //           chrome.tabs.executeScript(tab.id, {file: 'hdcalenderparser.js'} );
 //         }
 //       });
-      
 //     }
-
 // });
-
-
-  
