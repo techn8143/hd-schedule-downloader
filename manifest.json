@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Home Depot Associate Schedule Downloader",
   "short_name": "HD Schedule Downloader",
-  "version": "1.0",
+  "version": "1.1",
   "description": "Adds CSV and ICAL download links to the MYTHDHR schedule page.",
   "homepage_url": "https://github.com/techn8143/hd-schedule-downloader",
   "permissions": ["declarativeContent", "downloads", "storage"],
