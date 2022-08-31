@@ -1,63 +1,56 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+    <meta charset="UTF-8">
+    <title>HD Schedule Downloader Options</title>
+    <meta name="color-scheme" content="light dark">
+    <meta name="viewport" content="width=device-width">
     <style>
-      body{
-        font-size: 24px;
+      body {
+        font-size: 1rem;
+        font-family: sans-serif;
       }
-      input{
-        font-size: 24px;
-        height: 30px;
-        width: 500px;
-        margin-top: 10px;
-        margin-bottom: 10px;
-      }
-      button{
-        font-size: 24px;
+      label {
         display: inline-block;
+        margin-bottom: .5rem;
       }
-      label{
-        display: inline-block;
-        width: 220px;
-        text-align: right;
-      }
-      .save-button{
-        margin-top: 20px;
+      input {
         display: block;
+        width: 100%;
+        padding: .375rem .75rem;
+        margin-bottom: 1rem;
+        box-sizing: border-box;
+      }
+      button {
+        padding: .375rem .75rem;
+      }
+      .wrapper {
+        max-width: 400px;
+        margin: 0 auto;
+      }
+      .title {
+        width: 100%;
         text-align: center;
-        width: 100%;
       }
-      .options{
-        line-height: 32px;
-        display: block;
-        width: max-content;
-      }
-      .title{
-        width: 100%;
+      p {
+        font-size: 0.75rem;
+        line-height: 1.5rem;
         text-align: center;
       }
     </style>
   </head>
   <body>
-    <div id="buttonDiv" style="display: none">
+    <div class="wrapper">
+      <h3 class="title">HD Schedule Downloader Options</h3>
+      <label for="fileName">Default File Name</label>
+      <input type="text" id="fileName" name="fileName" value="hd-schedule" placeholder="hd-schedule" spellcheck="false">
+      <label for="eventName">Default Event Name</label>
+      <input type="text" id="eventName" name="eventName" value="Work-HD" placeholder="Work-HD">
+      <label for="location">Location</label>
+      <input type="text" id="location" name="location" value="" placeholder="2455 Paces Ferry Rd SE, Atlanta, GA 30339">
+      <button type="button" id="saveButton">Save</button>
+      <p>Reload the MYTHDHR schedule page to initialize your changes.</p>
     </div>
-      <div class="options">
-      <div class="title">
-          <h3>Home Depot Associate Schedule Downloader</h3>
-        </div>
-      <label>Default File Name:</label>
-      <input id="fileName" name="fileName" value="hd-schedule">
-      <br>
-      <label>Default Event Name:</label>
-      <input id="eventName" name="eventName" value="Work-HD">
-      <br>
-      <label>Location:</label>
-      <input id="location" name="location" value="">
-      <br>
-      <span class="save-button">
-      <button id="saveButton">Save</button>
-      </span>
-    </div>
+    <script src="options.js"></script>
   </body>
-  <script src="options.js"></script>
 </html>

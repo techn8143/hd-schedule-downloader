@@ -19,28 +19,28 @@ window.onload = function(){
   });
 }
 document.getElementById('saveButton').onclick = function(){
-  var filename = document.getElementById('fileName').value;
+  const filename = document.getElementById('fileName').value;
   chrome.storage.sync.set({filename: filename}, function() {
     console.log('Filename Saved As:' + filename);
   });
-  var location = document.getElementById('location').value;
+  const location = document.getElementById('location').value;
   chrome.storage.sync.set({location: location}, function() {
     console.log('Location Saved As:' + location);
   });
-  var eventname = document.getElementById('eventName').value;
+  const eventname = document.getElementById('eventName').value;
   chrome.storage.sync.set({eventname: eventname}, function() {
     console.log('Eventname Saved As:' + eventname);
   });
-  chrome.tabs.getCurrent(function(tab) {
-    chrome.tabs.query({url: 'https://yourschedule.homedepot.com/*'}, function(tab){
-        if (tab){
-          if (tab.length > 0){
-             for (var i = 0; i < tab.length; i++){
-                chrome.tabs.reload(tab[i].id, function(){});
-             }
-          }
-        }
-    });
-    chrome.tabs.remove(tab.id, function() {});
-  });
+  // chrome.tabs.getCurrent(function(tab) {
+  //   chrome.tabs.query({url: 'https://yourschedule.homedepot.com/*'}, function(tab){
+  //       if (tab){
+  //         if (tab.length > 0){
+  //            for (var i = 0; i < tab.length; i++){
+  //               chrome.tabs.reload(tab[i].id, function(){});
+  //            }
+  //         }
+  //       }
+  //   });
+  //   chrome.tabs.remove(tab.id, function() {});
+  // });
 }

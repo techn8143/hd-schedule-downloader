@@ -83,10 +83,4 @@ class HDScheduleParser{
         }
         this.user = this.getUserName();
     }
-
-    
 }
-    
-
-
-
